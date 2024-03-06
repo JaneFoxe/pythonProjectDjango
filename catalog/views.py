@@ -10,4 +10,10 @@ def homepage(request):
 
 
 def contactspage(request):
-    return render(request, 'catalog/contacts.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+        print(f'Новое сообщение от {name} ({phone}): {message}')
+    return render(request, 'contacts/contacts.html')
+
