@@ -20,7 +20,7 @@ def contactspage(request):
         phone = request.POST.get('phone')
         message = request.POST.get('message')
         print(f'Новое сообщение от {name} ({phone}): {message}')
-    return render(request, 'contacts/contacts.html')
+    return render(request, 'catalog/contacts.html')
 
 
 def product_card(request, pk):

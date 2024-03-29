@@ -5,10 +5,8 @@ from catalog.apps import MainappConfig
 
 app_name = MainappConfig.name
 
-
-
 urlpatterns = [
-    path('', homepage,),
+    path('', homepage),
     path('contacts/', contactspage),
     path('<int:pk>/', product_card, name='product_card')
 ]
