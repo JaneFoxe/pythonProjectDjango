@@ -1,5 +1,5 @@
 {% extends 'catalog/base.html' %}
-
+{% load my_tags%}
 {% block content %}
 <div class="container">
         <div class="d-flex justify-content-center">
@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <h2 class="card-title pricing-card-title">{{ object.name }}</h2>
                 </div>
-                <img src="/media/{{object.image}}" height=560 class="card-img-top" alt="...">
+                <img src="{{ object.image | my_media_filter}}" height=560 class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="my-0 font-weight-normal">{{ object.price }}₽</h4>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
