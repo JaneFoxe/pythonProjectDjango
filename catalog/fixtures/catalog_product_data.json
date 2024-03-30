@@ -1,0 +1,171 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Брюки клеш",
+      "description": "",
+      "image": "",
+      "category": 1,
+      "price": "100.00",
+      "created_at": "2024-03-22T17:48:17.125Z",
+      "updated_at": "2024-03-22T17:48:17.126Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Брюки карго",
+      "description": "",
+      "image": "",
+      "category": 1,
+      "price": "100.00",
+      "created_at": "2024-03-22T17:51:37.966Z",
+      "updated_at": "2024-03-22T17:51:37.966Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Брюки зауженные",
+      "description": "",
+      "image": "",
+      "category": 1,
+      "price": "100.00",
+      "created_at": "2024-03-22T17:51:52.181Z",
+      "updated_at": "2024-03-22T17:51:52.181Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Рубашка в клетку",
+      "description": "",
+      "image": "",
+      "category": 2,
+      "price": "150.00",
+      "created_at": "2024-03-22T17:53:11.931Z",
+      "updated_at": "2024-03-22T17:53:11.931Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Рубашка в полоску",
+      "description": "",
+      "image": "",
+      "category": 2,
+      "price": "150.00",
+      "created_at": "2024-03-22T17:53:37.265Z",
+      "updated_at": "2024-03-22T17:53:37.265Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Рубашка в ромбик",
+      "description": "",
+      "image": "",
+      "category": 2,
+      "price": "250.00",
+      "created_at": "2024-03-22T17:53:55.376Z",
+      "updated_at": "2024-03-22T17:53:55.376Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Рубашка прозрачная",
+      "description": "",
+      "image": "",
+      "category": 2,
+      "price": "200.00",
+      "created_at": "2024-03-22T17:54:14.469Z",
+      "updated_at": "2024-03-22T17:54:14.469Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Шляпа соломенная",
+      "description": "",
+      "image": "",
+      "category": 3,
+      "price": "200.00",
+      "created_at": "2024-03-22T17:54:45.216Z",
+      "updated_at": "2024-03-22T17:54:45.216Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "name": "Шляпа винтажная",
+      "description": "",
+      "image": "",
+      "category": 3,
+      "price": "500.00",
+      "created_at": "2024-03-22T17:55:08.690Z",
+      "updated_at": "2024-03-22T17:55:08.690Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "name": "Шляпа с полями",
+      "description": "",
+      "image": "",
+      "category": 3,
+      "price": "100.00",
+      "created_at": "2024-03-22T17:55:37.596Z",
+      "updated_at": "2024-03-22T17:55:37.596Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "name": "Пиджак малиновый",
+      "description": "",
+      "image": "",
+      "category": 4,
+      "price": "100.00",
+      "created_at": "2024-03-22T17:56:20.239Z",
+      "updated_at": "2024-03-22T17:56:20.239Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "name": "Пиджак элегантный",
+      "description": "",
+      "image": "",
+      "category": 4,
+      "price": "1000.00",
+      "created_at": "2024-03-22T17:58:37.130Z",
+      "updated_at": "2024-03-22T17:58:37.130Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+      "name": "Пиджак из золота",
+      "description": "",
+      "image": "",
+      "category": 4,
+      "price": "5000.00",
+      "created_at": "2024-03-22T17:58:55.363Z",
+      "updated_at": "2024-03-22T17:58:55.363Z"
+    }
+  }
+]
