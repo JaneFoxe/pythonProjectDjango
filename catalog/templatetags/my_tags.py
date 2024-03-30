@@ -3,7 +3,7 @@ from django import template
 register = template.Library()
 
 
-@register.filter(name='my_tag')
+@register.filter
 def my_media_filter(data):
     if data:
         return f"/media/{data}"
