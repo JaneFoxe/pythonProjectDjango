@@ -1,0 +1,34 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Брюки",
+      "description": "Мама сшила мне штаны из березовой коры"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Рубашки",
+      "description": "Рубаха-парень"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Шляпы",
+      "description": "Купил мужик шляпу, а она ему как раз"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "name": "Пиджаки",
+      "description": "Шайтан-накидка"
+    }
+  }
+]
