@@ -9,13 +9,13 @@ from catalog.models import Category, Product
 class Command(BaseCommand):
 
     @staticmethod
-    def json_read_categories(): #Здесь мы получаем данные из фикстуры с категориями
+    def json_read_categories():  # Здесь мы получаем данные из фикстуры с категориями
         with open('catalog/fixtures/catalog_category_data.json', 'r', encoding='UTF-8') as category_file:
             data = json.load(category_file)
         return data
 
     @staticmethod
-    def json_read_products():#Здесь мы получаем данные из фикстуры с продуктами
+    def json_read_products():  # Здесь мы получаем данные из фикстуры с продуктами
         with open('catalog/fixtures/catalog_product_data.json', 'r', encoding='UTF-8') as category_file:
             data = json.load(category_file)
         return data
