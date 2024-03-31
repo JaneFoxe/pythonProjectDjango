@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 
 from catalog.views import homepage, contactspage, product_card
 from catalog.apps import MainappConfig
