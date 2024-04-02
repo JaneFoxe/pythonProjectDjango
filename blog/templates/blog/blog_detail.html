@@ -1,0 +1,25 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags%}
+{% block content %}
+<div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="card mb-4 box-shadow text-center">
+                <div class="card-header">
+                    <h2 class="card-title pricing-card-title">{{ object.title }} ({{ object.slug }})
+                    </h2>
+                </div>
+                <img src="{{ object.preview }}" height=560 class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p>
+                        {{object.content}}
+                    </p>
+                    <div class="card-footer">
+                        Просмотры: {{object.views}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
