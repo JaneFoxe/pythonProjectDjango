@@ -27,3 +27,9 @@ class ProductForm(forms.ModelForm):
                 raise forms.ValidationError(f'Недопустимое слово: {word}')
 
         return cleaned_data
+
+
+class VersionForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
