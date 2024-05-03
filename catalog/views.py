@@ -49,13 +49,13 @@ class ProductUpdateView(UpdateView):
             context['formset'] = ProductFormset(instance=self.object)
         return context
 
-    # def form_valid(self, form):
-    #     context = self.get_context_data()
-    #     formset = context['formset']
-    #     if form.is_valid() and formset.is_valid():
-    #         self.object = form.save()
-    #         formset.instance = self.object
-    #         formset.save()
-    #         return super().form_valid(form)
-    #     else:
-    #         return self.render_to_response(self.get_context_data(form=form, formset=formset))
+    def form_valid(self, form):
+        context = self.get_context_data()
+        formset = context['formset']
+        if form.is_valid() and formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return super().form_valid(form)
+        else:
+            return self.render_to_response(self.get_context_data(form=form, formset=formset))

@@ -1,36 +1,41 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
-<div class="row">
-    <div class="col-6">
-        <div class="card">
-            <h3 class="card-header">Добавить товар</h3>
-            <div class="card--body">
-                <form method="post">
+<form method="post">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <h3 class="card-header">Добавить товар</h3>
+                <div class="card--body">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-success">
                         {% if object %}
-                        Сохранить
+                            Сохранить изменения
                         {% else %}
-                        Создать
+                            Добавить товар
                         {% endif %}
                     </button>
-                </form>
+                </div>
             </div>
         </div>
+                    {% if object %}
+                        <div class="col-6">
+                            <div class="card shadow-sm">
+                                <div class="card-header h3">
+                                    Версия товара
+                                </div>
+                                <div class="card-body">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        {{ formset.management_form }}
+                                        {% for form in formset.forms %}
+                                            {{ form.as_p }}
+                                        {% endfor %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
     </div>
-    <div class="col-6">
-        <div class="card">
-            <h3 class="card-header">Версии товара</h3>
-            <div class="card--body">
-                 {% csrf_token %}
-                {{formset.management_form}}
-                {% for form in formset.forms %}
-                    {{form.as_p}}
-                {% endfor%}
-                </form>
-            </div>
-        </div>
-    </div>
-<div
+</form>
 {% endblock %}
