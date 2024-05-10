@@ -13,7 +13,7 @@
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>- Категория : {{object.category.name}}</li>
                         <li>- Описание: {{object.description | truncatechars:100}}</li>
-                        <p>Активная версия: {{ object.active_version }}</p>
+                        <p>- Активная версия: {{ version }}</p>
                     </ul>
                 </div>
             </div>
@@ -26,8 +26,8 @@
                 </div>
                 <div class="card-body">
                     <ul>
-                    {% for version in object.version_set.all %}
-                        {{ version }}
+                    {% for version in version_list %}
+                        <li>{{ version.version_number }} {{ version.version_name }}</li>
                     {% endfor %}
                     </ul>
                 </div>
