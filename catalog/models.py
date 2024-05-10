@@ -56,7 +56,7 @@ class Version(models.Model):
 
     def __str__(self):
         # Строковое отображение объекта
-        return f"{self.name} | {self.version_number}"
+        return f"{self.version_name} | {self.version_number}"
 
 
     class Meta:

@@ -12,10 +12,28 @@
                     <h4 class="my-0 font-weight-normal">{{ object.price }}₽</h4>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>- Категория : {{object.category.name}}</li>
-                        <li>- Описание{{object.description | truncatechars:100}}</li>
+                        <li>- Описание: {{object.description | truncatechars:100}}</li>
+                        <p>- Активная версия: {{ version }}</p>
                     </ul>
                 </div>
             </div>
+            <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Версия продукта
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                    {% for version in version_list %}
+                        <li>{{ version.version_number }} {{ version.version_name }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
         </div>
     </div>
 {% endblock %}
