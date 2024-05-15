@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -9,8 +10,6 @@ from catalog.models import Product, Version
 
 class ProductListView(ListView):
     model = Product
-
-
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
@@ -62,13 +61,22 @@ class ProductDetailView(DetailView):
 
         return context
 
-class ProductCreateView(CreateView):
+
+class ProductCreateView(CreateView, LoginRequiredMixin):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
 
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
 
-class ProductUpdateView(UpdateView):
+        return super().form_valid(form)
+
+
+class ProductUpdateView(UpdateView, LoginRequiredMixin):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
@@ -85,10 +93,14 @@ class ProductUpdateView(UpdateView):
     def form_valid(self, form):
         context = self.get_context_data()
         formset = context['formset']
-        if form.is_valid() and formset.is_valid():
-            self.object = form.save()
-            formset.instance = self.object
-            formset.save()
+        if formset.is_valid():
+            product = form.save(commit=False)  # Сохраняем форму без коммита
+            user = self.request.user
+            product.owner = user
+            product.save()  # Сохраняем продукт с установленным владельцем
+            formset.instance = product
+            formset.save()  # Сохраняем формсет
             return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
+

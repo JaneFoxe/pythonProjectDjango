@@ -2,7 +2,9 @@
 {% block content %}
     <div class="container">
             <div class="col-12 mb-5">
+                {% if user.is_authenticated %}
                 <a class="btn btn-outline-primary btn-lg" href="{% url 'catalog:create_product' %}" >Добавить товар</a>
+                {% endif %}
             </div>
         <div class="row text-center">
             {% for object in object_list %}
@@ -19,7 +21,9 @@
                             <p>- Активная версия: {{ object.active_version }}</p>
                         </ul>
                         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_card' object.pk%}"> Перейти </a>
+                        {% if user.is_authenticated %}
                         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:update_product' object.pk %}">Изменить</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

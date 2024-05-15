@@ -1,0 +1,20 @@
+{% extends 'catalog/base.html'%}
+
+{% block content %}
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="card">
+                    <h3 class="card-title">
+                        Профиль
+                    </h3>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
