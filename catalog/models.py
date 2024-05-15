@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name="Наименование")
@@ -23,6 +25,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Дата последнего изменения (записи в БД)"
     )
+    owner = models.ForeignKey(User, verbose_name="Владелец", null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         # Строковое отображение объекта
