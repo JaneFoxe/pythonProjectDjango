@@ -26,6 +26,7 @@ class Product(models.Model):
         auto_now_add=True, verbose_name="Дата последнего изменения (записи в БД)"
     )
     owner = models.ForeignKey(User, verbose_name="Владелец", null=True, blank=True, on_delete=models.SET_NULL)
+    is_published = models.BooleanField(default=False, verbose_name='Признак публикации')
 
     def __str__(self):
         # Строковое отображение объекта
@@ -34,6 +35,21 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Продукт"  # Настройка для наименования одного объекта
         verbose_name_plural = "Продукты"  # Настройка для наименования набора объектов
+
+        permissions = [
+            (
+                'set_published',
+                'Can publish posts'
+            ),
+            (
+                'change_description',
+                'Can change description'
+            ),
+            (
+                'change_category',
+                'Can change category'
+            )
+        ]
 
 
 class Category(models.Model):
@@ -60,7 +76,6 @@ class Version(models.Model):
     def __str__(self):
         # Строковое отображение объекта
         return f"{self.version_name} | {self.version_number}"
-
 
     class Meta:
         verbose_name = "Версия"  # Настройка для наименования одного объекта

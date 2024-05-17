@@ -24,7 +24,7 @@ class Command(BaseCommand):
         # Удалите все продукты
         # Удалите все категории
         with connection.cursor() as cur:
-            cur.execute(f'TRUNCATE TABLE catalog_category RESTART IDENTITY CASCADE;')
+            cur.execute(f"TRUNCATE TABLE catalog_category RESTART IDENTITY CASCADE;")
 
         Category.objects.all().delete()
         Product.objects.all().delete()
@@ -33,7 +33,7 @@ class Command(BaseCommand):
         product_for_create = []
         category_for_create = []
 
-        # Обходим все значения категорий из фиктсуры для получения информации об одном объекте
+        # Обходим все значения категорий из фикстуры для получения информации об одном объекте
         for category in Command.json_read_categories():
             category_for_create.append(
                 Category(name=category['fields']['name'], description=category['fields']['description'])
