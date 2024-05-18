@@ -88,7 +88,7 @@ class ProductCreateView(CreateView, LoginRequiredMixin):
 class ProductUpdateView(UpdateView, LoginRequiredMixin, PermissionRequiredMixin):
     model = Product
     form_class = ProductForm
-    permission_required = 'users.change_product'
+    # permission_required = 'users.change_product'
     success_url = reverse_lazy('catalog:home')
 
     def get_context_data(self, **kwargs):
