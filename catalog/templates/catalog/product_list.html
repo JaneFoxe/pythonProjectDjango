@@ -20,9 +20,11 @@
                             <li>- Описание : {{object.description| truncatechars:100}}</li>
                             <p>- Активная версия: {{ object.active_version }}</p>
                         </ul>
-                        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_card' object.pk%}"> Перейти </a>
                         {% if user.is_authenticated %}
-                        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:update_product' object.pk %}">Изменить</a>
+                            <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_card' object.pk%}"> Перейти </a>
+                            {% if perms.catalog.set_published and perms.catalog.change_description and perms.catalog.change_category or user == object.owner%}
+                                <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:update_product' object.pk %}">Изменить</a>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
