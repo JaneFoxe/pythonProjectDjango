@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.cache import cache
 from django.core.exceptions import PermissionDenied
 from django.forms import inlineformset_factory
 from django.shortcuts import render
@@ -6,7 +8,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
 from catalog.forms import ProductForm, VersionForm, ModeratorForm
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
+from catalog.services import get_cached_categories
 
 
 class ProductListView(ListView):
@@ -27,6 +30,11 @@ class ProductListView(ListView):
         context_data['object_list'] = products
         return context_data
 
+class CategoryListView(ListView):
+    model = Category
+
+    def get_queryset(self):
+        return get_cached_categories()
 
 class ContactsView(TemplateView):
     template_name = 'catalog/contacts.html'
@@ -57,8 +65,18 @@ class ProductDetailView(DetailView, PermissionRequiredMixin, LoginRequiredMixin)
         else:
             product.active_version = 'Нет активной версии'
 
+        # if settings.CACHE_ENABLED:
+        #     key = f'category_name_{self.object.pk}'
+        #     category_name = cache.get(key)
+        #     if category_name is None:
+        #         category_name = self.object.category
+        #         cache.set(key, category_name)
+        #     else:
+        #         category_name = self.object.category
+
         context['version'] = product.active_version
         context['version_list'] = versions
+        # context['subjects'] = category_name
 
         return context
 
@@ -118,6 +136,7 @@ class ProductUpdateView(UpdateView, LoginRequiredMixin, PermissionRequiredMixin)
         user = self.request.user
         if user == self.object.owner:
             return ProductForm
-        if user.has_perm('catalog.set_published') and user.has_perm('catalog.change_description') and user.has_perm('catalog.change_category'):
+        if user.has_perm('catalog.set_published') and user.has_perm('catalog.change_description') and user.has_perm(
+                'catalog.change_category'):
             return ModeratorForm
         raise PermissionDenied
